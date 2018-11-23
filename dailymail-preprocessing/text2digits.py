@@ -1,37 +1,50 @@
 import os
+import spacy
+from spacy.lang.en import English
+
+nlp = spacy.load('en_core_web_sm')
+tokenizer = English().Defaults.create_tokenizer(nlp)
 
 indir = "/Users/norahollenstein/Downloads/dailymail/stories/"
 outdir = "../data/texts/"
 
-for infile in os.listdir(indir)[:10]:
+dict_idx = 0
 
-    text = open(infile, "r").readlines()
+txt2digits = {}
 
-    txt2digits = {}
-    idx = 0
-    for line in infile:
+for infile in os.listdir(indir)[:20]:
+
+    text = open(indir+infile, "r").readlines()
+
+    for line in text:
         if not line == "\n":
-            line = line.split("\t")
-            if line[0] not in txt2digits:
-                    txt2digits[line[0]] = idx
-                    idx += 1
+            tokens = tokenizer(line)
+            for tok in tokens:
+                if not str(tok).isspace():
+                    if str(tok) not in txt2digits:
+                        txt2digits[str(tok)] = dict_idx
+                        dict_idx += 1
 
-    dictionary_file = open("../data/dictionary.txt", "w")
-    for word, digit in txt2digits.items():
-        print(digit, word, file=dictionary_file)
+dictionary_file = open("../data/dictionary.txt", "w")
+for word, digit in txt2digits.items():
+    print(digit, word, file=dictionary_file)
 
-    filenames_file = open("../data/filenames.txt", "w")
+file_idx = 0
+filenames_file = open("../data/filenames.txt", "w")
+for infile in os.listdir(indir)[:2]:
 
-    i = 0
-    for line in infile:
-        outfile = open(outdir + "dailymail_digits_"+str(i)+".txt", "a")
+    text = open(indir+infile, "r").readlines()
+    outfile = open(outdir + "dailymail_digits_" + str(file_idx) + ".txt", "w")
+    print("dailymail_digits_" + str(file_idx) + ".txt", file=filenames_file)
+
+    for line in text:
         if not line == "\n":
-            line = line.split("\t")
+            tokens = tokenizer(line)
+            for tok in tokens:
+                if not str(tok).isspace():
+                    print(txt2digits[str(tok)], file=outfile)
+    print("\n", file=outfile)
 
-            print(txt2digits[line[0]], file=outfile)
-        else:
-            print("\n", file=outfile)
-            print("dailymail_digits_"+str(i)+".txt", file=filenames_file)
-            i += 1
+    file_idx += 1
 
 print("PREPROCESSING DONE.")

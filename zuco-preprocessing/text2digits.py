@@ -7,8 +7,8 @@ for line in infile:
     if not line == "\n":
         line = line.split("\t")
         if line[0] not in txt2digits:
-                txt2digits[line[0]] = idx
-                idx += 1
+            txt2digits[line[0]] = idx
+            idx += 1
 
 dictionary_file = open("../data/dictionary.txt", "w")
 for word, digit in txt2digits.items():
