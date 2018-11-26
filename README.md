@@ -2,7 +2,7 @@
 
 Code for Modeling Human Reading with Neural Attention (EMNLP 2016).
 
-Code adapted to ZuCo data.
+Code adapted to test on ZuCo data.
 
 
 ## Preparing data
