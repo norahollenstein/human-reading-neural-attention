@@ -12,7 +12,7 @@ dict_idx = 0
 
 txt2digits = {}
 
-for infile in os.listdir(indir)[:200]:
+for infile in os.listdir(indir)[:2000]:
 
     text = open(indir+infile, "r").readlines()
 
@@ -31,7 +31,7 @@ for word, digit in txt2digits.items():
 
 file_idx = 0
 filenames_file = open("../data/filenames.txt", "w")
-for infile in os.listdir(indir)[:200]:
+for infile in os.listdir(indir)[:2000]:
 
     text = open(indir+infile, "r").readlines()
     outfile = open(outdir + "dailymail_digits_" + str(file_idx) + ".txt", "w")
