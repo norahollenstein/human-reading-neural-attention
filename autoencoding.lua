@@ -118,7 +118,7 @@ function autoencoding.setupAutoencoding()
      paramxR, paramdxR = reader_core_network:getParameters()
      readerRNNs = {}
      for i=1,params.seq_length do
-        readerRNNs[i] = clone(reader_core_network)
+        readerRNNs[i] = clone_network(reader_core_network)
      end
 
      -- ACTOR
@@ -126,7 +126,7 @@ function autoencoding.setupAutoencoding()
      paramxA, paramdxA = actor_core_network:getParameters()
      actorRNNs = {}
      for i=1,params.seq_length do
-        actorRNNs[i] = clone(actor_core_network)
+        actorRNNs[i] = clone_network(actor_core_network)
      end
 
      -- ATTENTION
@@ -134,12 +134,12 @@ function autoencoding.setupAutoencoding()
      paramxRA, paramdxRA = attentionNetwork:getParameters()
      attentionNetworks = {}
      for i=1,params.seq_length do
-        attentionNetworks[i] = clone(attentionNetwork)
+        attentionNetworks[i] = clone_network(attentionNetwork)
      end
   elseif true then
 
      print("LOADING MODEL AT "..BASE_DIRECTORY.."/model-"..fileToBeLoaded)
-     
+
      local params2, sentencesRead, SparamxR, SparamdxR, SparamxA, SparamdxA, SparamxRA, SparamdxRA, readerCStart, readerHStart, SparamxB, SparamdxB = unpack(torch.load(BASE_DIRECTORY.."/model-"..fileToBeLoaded, "binary"))
 
     if SparamxB == nil and USE_BIDIR_BASELINE and DO_TRAINING and IS_CONTINUING_ATTENTION then
@@ -166,7 +166,7 @@ function autoencoding.setupAutoencoding()
      readerRNNs = {}
 
      for i=1,params.seq_length do
-        readerRNNs[i] = clone(reader_core_network)
+        readerRNNs[i] = clone_network(reader_core_network)
      end
 
      -- ACTOR
@@ -182,7 +182,7 @@ function autoencoding.setupAutoencoding()
      actorRNNs = {}
 
      for i=1,params.seq_length do
-        actorRNNs[i] = clone(actor_core_network)
+        actorRNNs[i] = clone_network(actor_core_network)
      end
 
      -- ATTENTION
@@ -216,7 +216,7 @@ function autoencoding.setupAutoencoding()
      paramxRA, paramdxRA = attentionNetwork:getParameters()
      attentionNetworks = {}
      for i=1,params.seq_length do
-        attentionNetworks[i] = clone(attentionNetwork)
+        attentionNetworks[i] = clone_network(attentionNetwork)
      end
 
 
