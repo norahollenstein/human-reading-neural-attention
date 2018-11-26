@@ -12,7 +12,7 @@ dict_idx = 0
 
 txt2digits = {}
 
-for infile in os.listdir(indir)[:20]:
+for infile in os.listdir(indir)[:200]:
 
     text = open(indir+infile, "r").readlines()
 

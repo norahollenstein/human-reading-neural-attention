@@ -20,6 +20,8 @@ or in general:
 
 `th main-attention.lua 1 false false BATCH_SIZE SEQUENCE_LENGTH LSTM_DIMENSION VOCABULARY 5.0 false LEARNING_RATE EMBEDDINGS_DIMENSION 0.0001 20 false none NAME_OF_YOUR_MODEL combined true 11 true 5.0 full true fixed`
 
+`VOCABULARY` is the number of tokens in `data/dictionary.txt`.
+
 To control the learning rate during training, edit the file `lr-1`, whose content is the learning rate.
 
 To control the attention rate during training, edit `attention-1` in the same directory, whose content is the attention rate (a number between 0 and 1). In the original experiments, it was initialized at 1 and annealed to 0.6.
@@ -47,6 +49,5 @@ or in general:
 `th main-attention.lua 1 true true BATCH_SIZE SEQUENCE_LENGTH LSTM_DIMENSION VOCABULARY TOTAL_ATTENTION_WEIGHT false LEARNING_RATE EMBEDDINGS_DIMENSION 0.1 20 false NAME_OF_ATTENTION_MODEL NAME_OF_ATTENTION_MODEL combined false 1 true ENTROPY_WEIGHT full true fixed`
 
 This will create files with attention output in `data/annotation/`.
-
 
 
