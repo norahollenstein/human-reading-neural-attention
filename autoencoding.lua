@@ -142,7 +142,7 @@ function autoencoding.setupAutoencoding()
      paramxR, paramdxR = reader_core_network:getParameters()
      readerRNNs = {}
      for i=1,params.seq_length do
-        readerRNNs[i] = clone_network(reader_core_network)
+        readerRNNs[i] = autoencoding.clone_network(reader_core_network)
      end
 
      -- ACTOR
