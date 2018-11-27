@@ -32,7 +32,6 @@ function clone_network(net)
 end
 
 
-
 function g_d(f)
   return string.format("%d", torch.round(f))
 end

@@ -7,7 +7,31 @@ assert(not autoencoding.USE_PRETRAINED_EMBEDDINGS)
 print(autoencoding)
 
 
+function autoencodeing.clone_network(net)
+  local params, gradParams = net:parameters()
+  local mem = torch.MemoryFile("w"):binary()
+  mem:writeObject(net)
 
+    -- We need to use a new reader for each clone.
+    -- We don't want to use the pointers to already read objects.
+    local reader = torch.MemoryFile(mem:storage(), "r"):binary()
+    local clone = reader:readObject()
+    reader:close()
+    local cloneParams, cloneGradParams = clone:parameters()
+    for i = 1, #params do
+      cloneParams[i]:set(params[i])
+      cloneGradParams[i]:set(gradParams[i])
+    end
+    collectgarbage()
+
+  mem:close()
+  return clone
+end
+
+
+function g_d(f)
+  return string.format("%d", torch.round(f))
+end
 
 
 function autoencoding.create_network(withOutput, doZeroMaskingOnLookupTable, inputDropout)
@@ -112,9 +136,6 @@ function autoencoding.setupAutoencoding()
    recurrent_variance_average = 100
    if not LOAD then
      -- READER
-
-     require('base')
-
      local reader_core_network
      reader_core_network = autoencoding.create_network(true,false,true)
 
