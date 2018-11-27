@@ -7,7 +7,7 @@ assert(not autoencoding.USE_PRETRAINED_EMBEDDINGS)
 print(autoencoding)
 
 
-function autoencodeing.clone_network(net)
+function autoencoding.clone_network(net)
   local params, gradParams = net:parameters()
   local mem = torch.MemoryFile("w"):binary()
   mem:writeObject(net)
