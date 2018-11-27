@@ -6,7 +6,7 @@ assert(not autoencoding.USE_PRETRAINED_EMBEDDINGS)
 
 print(autoencoding)
 
-require('base')
+
 
 
 
@@ -112,6 +112,9 @@ function autoencoding.setupAutoencoding()
    recurrent_variance_average = 100
    if not LOAD then
      -- READER
+
+     require('base')
+
      local reader_core_network
      reader_core_network = autoencoding.create_network(true,false,true)
 
