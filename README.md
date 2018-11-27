@@ -18,9 +18,13 @@ Models are saved to and loaded from `models/`.
 
 or in general:
 
-`th main-attention.lua 1 false false BATCH_SIZE SEQUENCE_LENGTH LSTM_DIMENSION VOCABULARY 5.0 false LEARNING_RATE EMBEDDINGS_DIMENSION 0.0001 20 false none NAME_OF_YOUR_MODEL combined true 11 true 5.0 full true fixed`
+`th main-attention.lua 1 false false BATCH_SIZE SEQUENCE_LENGTH LSTM_DIMENSION VOCABULARY 5.0 false LEARNING_RATE EMBEDDINGS_DIMENSION 0.0001 20 false none NAME_OF_YOUR_MODEL combined true CORPUS_NUMBER true 5.0 full true fixed`
 
-`VOCABULARY` is the number of tokens in `data/dictionary.txt`.
+`VOCABULARY` is smaller or equal to the number of tokens in `data/dictionary.txt`. All words with indices greater than the vocabulary size will be replaced by "OOV".
+
+`SEQUENCE_LENGTH`: each article is chopped into fixed-length strings for processing, default = 50.
+
+`CORPUS_NUMBER` can be any integer, remnant from older version of code.
 
 To control the learning rate during training, edit the file `lr-1`, whose content is the learning rate.
 
