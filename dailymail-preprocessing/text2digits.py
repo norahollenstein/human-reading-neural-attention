@@ -46,7 +46,7 @@ print("dictionary done.")
  #   l = l.split()
   #  txt2digits[l[0]] = l[1]
 
-
+"""
 file_idx = 0
 filenames_file = open("../data/filenames.txt", "w")
 
@@ -70,3 +70,4 @@ for infile in os.listdir(indir):
         print(file_idx, " of ", len(os.listdir(indir)))
 
 print("PREPROCESSING DONE.")
+"""
