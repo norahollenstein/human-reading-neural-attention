@@ -30,7 +30,24 @@ To control the learning rate during training, edit the file `lr-1`, whose conten
 
 To control the attention rate during training, edit `attention-1` in the same directory, whose content is the attention rate (a number between 0 and 1). In the original experiments, it was initialized at 1 and annealed to 0.6.
 
+# Training:
+During training, the autoencoder occasionally outputs a word sequence with some annotation like the following:
 
+`common   '  0.12863277395199  1.0437612589932e-05        '  0.18989889768736  6.0917715431689e-06        1  1`
+
+which contains the following information:
+
+- the actual word
+- the word reconstructed by the decoder
+- the probability assigned to that word
+- the probability the decoder assigns to the correct word
+- the word predicted by the language model
+- the probability assigned to that word by the LM
+- the prob. assigned to the correct word by the LM
+- the fixation probability (which is controlled by the content of attention-1 during training of the autoencoder)
+- whether the word was actually fixated
+
+Training will stop after 1 epoch, as specified in the variable EPOCHS_NUMBER in setParameters.lua. During this epoch, you can manually anneal the attention rate in attention-1 down to something like 0.6 so that the model gets used to skipping. The model is saved after every 500 training steps.
 
 ## Creating an attention network:
 
