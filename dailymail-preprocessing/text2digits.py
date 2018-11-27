@@ -6,13 +6,13 @@ from spacy.lang.en import English
 nlp = spacy.load('en_core_web_sm')
 tokenizer = English().Defaults.create_tokenizer(nlp)
 
-indir = "/Users/norahollenstein/Downloads/dailymail/stories/"
+indir = "../../datasets/dailymail/stories/"
 outdir = "../data/texts/"
 
 dict_idx = 0
 word_freq = {}
 
-for infile in os.listdir(indir)[:2000]:
+for infile in os.listdir(indir):
 
     text = open(indir+infile, "r").readlines()
 
@@ -36,7 +36,7 @@ for idx, word in enumerate(sorted_word_freq):
 
 file_idx = 0
 filenames_file = open("../data/filenames.txt", "w")
-for infile in os.listdir(indir)[:2000]:
+for infile in os.listdir(indir):
 
     text = open(indir+infile, "r").readlines()
     outfile = open(outdir + "dailymail_digits_" + str(file_idx) + ".txt", "w")
