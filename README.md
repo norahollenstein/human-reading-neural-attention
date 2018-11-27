@@ -30,7 +30,7 @@ To control the learning rate during training, edit the file `lr-1`, whose conten
 
 To control the attention rate during training, edit `attention-1` in the same directory, whose content is the attention rate (a number between 0 and 1). In the original experiments, it was initialized at 1 and annealed to 0.6.
 
-# Training:
+### Training:
 During training, the autoencoder occasionally outputs a word sequence with some annotation like the following:
 
 `common   '  0.12863277395199  1.0437612589932e-05        '  0.18989889768736  6.0917715431689e-06        1  1`
