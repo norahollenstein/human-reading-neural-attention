@@ -11,7 +11,7 @@ outdir = "../data/texts/"
 
 count = 0
 word_freq = {}
-"""
+
 print("reading stories...")
 for infile in os.listdir(indir):
 
@@ -35,16 +35,16 @@ dictionary_file = open("../data/dictionary.txt", "w")
 sorted_word_freq = sorted(word_freq.items(), key=operator.itemgetter(1), reverse=True)
 txt2digits = {}
 for idx, word in enumerate(sorted_word_freq):
-    print(word[0], idx, file=dictionary_file)
+    print(idx, word[0], file=dictionary_file)
     txt2digits[word[0]] = idx
 
 print("dictionary done.")
-"""
-dictionaryFile = open("../data/dictionary.txt", "r").readlines()
-txt2digits = {}
-for l in dictionaryFile:
-    l = l.split()
-    txt2digits[l[0]] = l[1]
+
+#dictionaryFile = open("../data/dictionary.txt", "r").readlines()
+#txt2digits = {}
+#for l in dictionaryFile:
+ #   l = l.split()
+  #  txt2digits[l[0]] = l[1]
 
 
 file_idx = 0
