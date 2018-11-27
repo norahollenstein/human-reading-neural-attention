@@ -29,6 +29,7 @@ for infile in os.listdir(indir):
 
     if count % 2000 == 0:
         print(count)
+    count += 1
 
 dictionary_file = open("../data/dictionary.txt", "w")
 sorted_word_freq = sorted(word_freq.items(), key=operator.itemgetter(1), reverse=True)
