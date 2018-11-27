@@ -12,9 +12,9 @@ outdir = "../data/texts/"
 count = 0
 word_freq = {}
 
+print("reading stories...")
 for infile in os.listdir(indir):
 
-    print("reading stories...")
     text = open(indir+infile, "r").readlines()
 
     for line in text:
