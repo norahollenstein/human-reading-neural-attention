@@ -6,7 +6,7 @@ assert(not autoencoding.USE_PRETRAINED_EMBEDDINGS)
 
 print(autoencoding)
 
-
+require('base')
 
 
 
