@@ -33,6 +33,7 @@ for idx, word in enumerate(sorted_word_freq):
     print(word[0], idx, file=dictionary_file)
     txt2digits[word[0]] = idx
 
+print("dictionary done.")
 
 file_idx = 0
 filenames_file = open("../data/filenames.txt", "w")
@@ -41,6 +42,7 @@ for infile in os.listdir(indir):
     text = open(indir+infile, "r").readlines()
     outfile = open(outdir + "dailymail_digits_" + str(file_idx) + ".txt", "w")
     print("dailymail_digits_" + str(file_idx) + ".txt", file=filenames_file)
+    print(file_idx, " of ", len(os.listdir(indir)))
 
     for line in text:
         if not line == "\n":
