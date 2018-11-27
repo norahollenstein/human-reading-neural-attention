@@ -11,7 +11,7 @@ outdir = "../data/texts/"
 
 count = 0
 word_freq = {}
-
+"""
 print("reading stories...")
 for infile in os.listdir(indir):
 
@@ -39,15 +39,22 @@ for idx, word in enumerate(sorted_word_freq):
     txt2digits[word[0]] = idx
 
 print("dictionary done.")
+"""
+dictionaryFile = open("../data/dictionary.txt", "r").readlines()
+txt2digits = {}
+for l in dictionaryFile:
+    l = l.split()
+    txt2digits[l[0]] = l[1]
+
 
 file_idx = 0
 filenames_file = open("../data/filenames.txt", "w")
+
 for infile in os.listdir(indir):
 
     text = open(indir+infile, "r").readlines()
     outfile = open(outdir + "dailymail_digits_" + str(file_idx) + ".txt", "w")
     print("dailymail_digits_" + str(file_idx) + ".txt", file=filenames_file)
-    print(file_idx, " of ", len(os.listdir(indir)))
 
     for line in text:
         if not line == "\n":
@@ -58,5 +65,8 @@ for infile in os.listdir(indir):
     print("\n", file=outfile)
 
     file_idx += 1
+
+    if file_idx % 2000 == 0:
+        print(file_idx, " of ", len(os.listdir(indir)))
 
 print("PREPROCESSING DONE.")
