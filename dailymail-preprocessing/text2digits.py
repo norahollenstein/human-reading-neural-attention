@@ -9,11 +9,12 @@ tokenizer = English().Defaults.create_tokenizer(nlp)
 indir = "../../datasets/dailymail/stories/"
 outdir = "../data/texts/"
 
-dict_idx = 0
+count = 0
 word_freq = {}
 
 for infile in os.listdir(indir):
 
+    print("reading stories...")
     text = open(indir+infile, "r").readlines()
 
     for line in text:
@@ -25,6 +26,9 @@ for infile in os.listdir(indir):
                         word_freq[str(tok)] = 1
                     else:
                         word_freq[str(tok)] += 1
+
+    if count % 100 == 0:
+        print(infile)
 
 dictionary_file = open("../data/dictionary.txt", "w")
 sorted_word_freq = sorted(word_freq.items(), key=operator.itemgetter(1), reverse=True)
