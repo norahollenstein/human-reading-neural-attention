@@ -8,6 +8,14 @@ print(autoencoding)
 
 
 function autoencoding.clone_network(net)
+--  Copyright (c) 2014, Facebook, Inc.
+--  All rights reserved.
+--
+--  This source code is licensed under the Apache 2 license found in the
+--  LICENSE file in the root directory of this source tree.
+--
+-- Adapted from from https://github.com/wojzaremba/lstm/blob/master/base.lua
+
   local params, gradParams = net:parameters()
   local mem = torch.MemoryFile("w"):binary()
   mem:writeObject(net)

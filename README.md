@@ -33,7 +33,7 @@ To control the attention rate during training, edit `attention-1` in the same di
 ### Training:
 During training, the autoencoder occasionally outputs a word sequence with some annotation like the following:
 
-`common   '  0.12863277395199  1.0437612589932e-05        '  0.18989889768736  6.0917715431689e-06        1  1`
+`wife 	 family  0.032227824671181  0.0192559908811 	 wife  0.029065559382715  0.029065559382715 	 1  1`
 
 which contains the following information:
 
