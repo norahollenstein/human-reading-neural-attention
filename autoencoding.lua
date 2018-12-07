@@ -170,7 +170,7 @@ function autoencoding.setupAutoencoding()
      end
   elseif true then
 
-     print("LOADING MODEL AT "..BASE_DIRECTORY.."/model-"..fileToBeLoaded)
+     print("LOADING MODEL AT "..BASE_DIRECTORY.."model-"..fileToBeLoaded)
 
      local params2, sentencesRead, SparamxR, SparamdxR, SparamxA, SparamdxA, SparamxRA, SparamdxRA, readerCStart, readerHStart, SparamxB, SparamdxB = unpack(torch.load(BASE_DIRECTORY.."/model-"..fileToBeLoaded, "binary"))
 
