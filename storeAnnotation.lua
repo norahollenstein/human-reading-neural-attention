@@ -12,7 +12,7 @@ STORE_ATTENTION_ANNOTATION = false
 if DOING_EVALUATION_OUTPUT and (params.TASK == "autoencoding" or params.TASK == "combined" or params.TASK == "combined-soft" or params.TASK == "neat-qa") then
   STORE_ATTENTION_ANNOTATION = true
 end
-ATTENTION_ANNOTATION_DIR = DATASET_DIR.."/annotation/att-"..arg[15].."/"
+ATTENTION_ANNOTATION_DIR = DATASET_DIR.."annotation/att-"..arg[15].."/"
 if STORE_ATTENTION_ANNOTATION then
    if DO_TRAINING then
       crash()
@@ -26,7 +26,7 @@ WRITE_SURPRISAL_SCORES = false
 if DOING_EVALUATION_OUTPUT and (params.TASK == "langmod" or params.TASK == "combined" or params.TASK == "combined-soft") then
   WRITE_SURPRISAL_SCORES = true
 end
-SURPRISAL_ANNOTATION_DIR = DATASET_DIR.."/annotation/surp-"..arg[15].."/"
+SURPRISAL_ANNOTATION_DIR = DATASET_DIR.."annotation/surp-"..arg[15].."/"
 if WRITE_SURPRISAL_SCORES then
    if DO_TRAINING then
       crash()
