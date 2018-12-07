@@ -2,11 +2,15 @@ numericalValues = {}
 
 numericalValues.numericalValuesImporter = {currentNumericalValuesContents = nil, values = {}}
 
+NUM_DIRECTORY = "data/texts/"
+
 
 function numericalValues.readNumericalValuesFile(fileName)
    local values = {}
-   print(numericalAnnotationDir..fileName)
-   io.input(numericalAnnotationDir..fileName)
+   -- print(numericalAnnotationDir..fileName)
+   -- io.input(numericalAnnotationDir..fileName)
+   print(NUM_DIRECTORY..fileName)
+   io.input(NUM_DIRECTORY..fileName)
    t = io.read("*all")
    local counter = 0
    for line in string.gmatch(t, "[^\n]+") do

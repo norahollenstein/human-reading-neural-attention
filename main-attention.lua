@@ -220,7 +220,7 @@ local function main()
            table.insert(modelsArray, udB)
         end
         if modelsArray ~= nil then
-           torch.save(BASE_DIRECTORY..'/model-'..experimentNameOut, modelsArray, "binary")
+           torch.save(BASE_DIRECTORY..'model-'..experimentNameOut, modelsArray, "binary")
         end
       end
 
@@ -245,10 +245,10 @@ local function main()
   fileStats:close()
 end
 
-if (not OVERWRITE_MODEL) and  (lfs.attributes(BASE_DIRECTORY..'/model-'..experimentNameOut) ~= nil) then
+if (not OVERWRITE_MODEL) and  (lfs.attributes(BASE_DIRECTORY..'model-'..experimentNameOut) ~= nil) then
    print("MODEL EXISTS, ABORTING")
 else
-  if (lfs.attributes(BASE_DIRECTORY..'/model-'..experimentNameOut) ~= nil) and OVERWRITE_MODEL then
+  if (lfs.attributes(BASE_DIRECTORY..'model-'..experimentNameOut) ~= nil) and OVERWRITE_MODEL then
      print("OVERWRITE MODEL")
   end
    main()

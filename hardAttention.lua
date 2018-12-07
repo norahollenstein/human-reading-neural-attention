@@ -18,6 +18,7 @@ function hardAttention.makeAttentionDecisions(i, inputTensor, surprisalValue, at
       else
           if params.EXTERNAL_ATTENTION_SOURCE == 'fixed' then 
               attention_scores[i]:fill(FIXED_ATTENTION)
+          -- WLEN = word length baseline
           elseif params.EXTERNAL_ATTENTION_SOURCE == 'WLEN' then
               for l=1, params.batch_size do
                    wlen = string.len(readDict.chars[inputTensor[l]])
